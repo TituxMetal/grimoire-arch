@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun install)",
+      "Bash(bun add:*)",
+      "Bash(bun run build)",
+      "Bash(bun run dev:*)",
+      "Bash(bun run preview:*)",
+      "Bash(bun create astro:*)",
+      "Bash(bunx:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git add:*)",
+      "Bash(git log:*)",
+      "Read(//home/titux/migration-backup/docs/**)"
+    ]
+  },
+  "extraKnownMarketplaces": {
+    "heart-of-gold-toolkit": {
+      "source": {
+        "source": "github",
+        "repo": "ondrej-svec/heart-of-gold-toolkit"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "deep-thought@heart-of-gold-toolkit": true,
+    "marvin@heart-of-gold-toolkit": true
+  }
+}
