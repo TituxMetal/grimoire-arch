@@ -1,0 +1,20 @@
+/*
+ * grimoire-arch — custom theme tweaks on top of the default Starlight theme.
+ * See docs/adr/2026-06-02-theme-starlight-defaut-customcss.md
+ *
+ * Keep this small: override only the accent tokens (and optionally gray shades).
+ * No Tailwind. Tune the actual palette in /work once content is in place.
+ */
+
+:root {
+	/* Accent color group — placeholder values, refine during /work. */
+	--sl-color-accent-low: #182d4d;
+	--sl-color-accent: #3b82f6;
+	--sl-color-accent-high: #b3c7e6;
+}
+
+:root[data-theme='light'] {
+	--sl-color-accent-low: #c7d8f2;
+	--sl-color-accent: #2563eb;
+	--sl-color-accent-high: #16335c;
+}

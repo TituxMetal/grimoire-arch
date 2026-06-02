@@ -8,6 +8,10 @@ dist/
 # Claude Code — local/personal settings (settings.json is shared and committed)
 .claude/settings.local.json
 
+# Environment variables
+.env
+.env.production
+
 # OS / editor
 .DS_Store
 *.log
