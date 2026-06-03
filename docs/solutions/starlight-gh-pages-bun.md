@@ -5,7 +5,7 @@ date: 2026-06-03
 domain: deployment
 component: astro.config.mjs, .github/workflows/deploy.yml, Pagefind
 symptoms:
-  - "build Astro vert alors que des liens internes sont cassés"
+  - "broken link / lien cassé non détecté : build Astro vert alors que des liens internes sont cassés"
   - "liens Markdown relatifs ../foo.md non réécrits, fuient tels quels dans le HTML"
   - "liens cassés en prod sur le sous-chemin GitHub Pages (mauvaise profondeur ou .md)"
   - "Pagefind indexe en anglais un site au contenu français"
