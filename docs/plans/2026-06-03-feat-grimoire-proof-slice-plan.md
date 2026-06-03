@@ -135,17 +135,13 @@ de contenu qui doivent exister sous peine de casser le build.
 
 ### Phase 3 — Deploy workflow (STORY-006)
 
-- [ ] Créer `.github/workflows/deploy.yml` :
-      - `on:` `push` vers `main` **+** `workflow_dispatch`.
-      - `permissions:` `contents: read`, `pages: write`, `id-token: write` (exactement
-        les trois requises — pas de `contents: write`).
-      - Job build : `actions/checkout@v6` → `withastro/action@v6` (bun auto-détecté
-        via `bun.lock`).
-      - Job deploy : `actions/deploy-pages@v4`, environment `github-pages`.
-      - **Aucune** commande npm/pnpm/yarn.
-- [ ] (Référence ADR) Alternative B documentée = `oven-sh/setup-bun@v2` + plomberie
-      manuelle — ne pas l'implémenter, `withastro/action` est le défaut acté.
-- [ ] Commit : `ci(pages): deploy via withastro/action on push to main`
+- [x] `.github/workflows/deploy.yml` créé (snippet officiel withastro vérifié) :
+      `on: push main + workflow_dispatch` ; `permissions: contents:read, pages:write,
+      id-token:write` (les 3 exactes) ; build `actions/checkout@v6` → `withastro/action@v6`
+      (bun auto-détecté via `bun.lock`) ; deploy `actions/deploy-pages@v4` env `github-pages`.
+      Zéro npm/pnpm/yarn ; seul lockfile = `bun.lock`.
+- [x] (Référence ADR) Alternative B `oven-sh/setup-bun@v2` non implémentée (défaut acté).
+- [x] Commit : `ci(pages): deploy via withastro/action on push to main`
 
 ### Phase 4 — Ship & verify (STORY-007) — actions sortantes, confirmer avant push
 

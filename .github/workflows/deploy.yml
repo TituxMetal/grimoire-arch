@@ -1,0 +1,33 @@
+name: Deploy to GitHub Pages
+
+# bun-only: withastro/action auto-detects bun.lock and runs
+# `bun install` + `bun run build`. No npm/pnpm/yarn anywhere.
+# See docs/adr/2026-06-02-workflow-deploiement-withastro-action.md
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Exactly the three permissions GitHub Pages deploy needs (no contents: write).
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: withastro/action@v6
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
