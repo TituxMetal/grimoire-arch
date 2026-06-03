@@ -56,9 +56,23 @@ export default defineConfig({
 					],
 				},
 				{
+					// Migration substrate — subordinate to the Guide hero: listed AFTER,
+					// collapsed, split into life-cycle sub-groups (brainstorm -> finding ->
+					// plan -> solution -> story -> adr) so 21 heterogeneous files never
+					// drown the guide. STORY-008 / Open Q4.
+					// v0.39 GOTCHA: the `autogenerate` object carries NO label; the label
+					// lives on the parent group. `directory: 'solutions'` auto-nests its
+					// bspwm/ and theme/ sub-folders. See docs/solutions/starlight-gh-pages-bun.md
 					label: 'Coulisses / journal',
 					collapsed: true,
-					items: [{ autogenerate: { directory: 'adr' } }],
+					items: [
+						{ label: 'Brainstorms', items: [{ autogenerate: { directory: 'brainstorms' } }] },
+						{ label: 'Findings', items: [{ autogenerate: { directory: 'findings' } }] },
+						{ label: 'Plans', items: [{ autogenerate: { directory: 'plans' } }] },
+						{ label: 'Solutions', items: [{ autogenerate: { directory: 'solutions' } }] },
+						{ label: 'Stories', items: [{ autogenerate: { directory: 'stories' } }] },
+						{ label: 'Décisions (ADR)', items: [{ autogenerate: { directory: 'adr' } }] },
+					],
 				},
 			],
 		}),
