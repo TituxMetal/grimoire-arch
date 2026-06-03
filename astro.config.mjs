@@ -13,6 +13,13 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Grimoire Arch',
+			// Monolingual French site at the root (no URL locale prefix). Sets
+			// <html lang="fr"> so Pagefind builds a FRENCH search index — accents
+			// and word segmentation matter (done-criterion #7). Default would be `en`.
+			defaultLocale: 'root',
+			locales: {
+				root: { label: 'Français', lang: 'fr' },
+			},
 			// Theme: default Starlight + a small custom stylesheet, no Tailwind.
 			// See docs/adr/2026-06-02-theme-starlight-defaut-customcss.md
 			customCss: ['./src/styles/custom.css'],
