@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightLinksValidator from 'starlight-links-validator';
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,6 +17,11 @@ export default defineConfig({
 			// Theme: default Starlight + a small custom stylesheet, no Tailwind.
 			// See docs/adr/2026-06-02-theme-starlight-defaut-customcss.md
 			customCss: ['./src/styles/custom.css'],
+			// Broken-link canary: Astro/Starlight do NOT fail the build on broken
+			// internal links by default. This plugin makes `bun run build` error on
+			// them — the real canary for the `guide/annexe-b → ../../adr/` seam and
+			// for STORY-008 propagation. See docs/adr/2026-06-03-link-validation-canary.md
+			plugins: [starlightLinksValidator()],
 			// TODO(/work STORY-002): replace this placeholder sidebar with the
 			// final structure once content lands in src/content/docs/:
 			//   - group "Guide": explicit ordered items (01..13 + annexes),
