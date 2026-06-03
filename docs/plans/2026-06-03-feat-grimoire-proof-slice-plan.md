@@ -151,7 +151,7 @@ de contenu qui doivent exister sous peine de casser le build.
 - [x] Run suivi : build (`withastro/action@v6`, **bun auto-détecté → assumption Unverified levée**) + deploy verts, conclusion `success`.
 - [x] Site vérifié **sur le vrai sous-chemin** : `/`, `/guide/01…`, `/guide/annexe-b-adr/`, ADR → tous **200**.
 - [x] Couture inter-dossiers en prod : les **17 liens** de l'annexe B → `/grimoire-arch/adr/<slug>/`, tous **200**.
-- [x] **FR/Pagefind (défaut corrigé)** : le site sortait en `<html lang="en">` → Pagefind indexait en anglais. Fix `defaultLocale: 'root' + lang: 'fr'` → live `lang="fr"`, **index Pagefind `fr`** (22 pages). Termes accentués du slice (`système`, `données`, `sécurité`, `vérifier`) indexés. ⚠️ **Reste à faire (in-browser, 30 s) :** taper un terme accentué dans l'UI et confirmer les résultats — non automatisable (Pagefind = recherche navigateur WASM, pas d'API Node de search).
+- [x] **FR/Pagefind (défaut corrigé)** : le site sortait en `<html lang="en">` → Pagefind indexait en anglais. Fix `defaultLocale: 'root' + lang: 'fr'` → live `lang="fr"`, **index Pagefind `fr`** (22 pages). Termes accentués du slice (`système`, `données`, `sécurité`, `vérifier`) indexés. **Recherche UI confirmée en prod par l'utilisateur** (terme accentué → résultats corrects). Note : `astro dev` n'a pas d'index Pagefind (construit au `build`) → avertissement local normal, la recherche n'existe que sur le site buildé/déployé.
 - [x] Sidebar en prod : Guide (01→02→03→annexe B) avant Coulisses ; `/archives/` → **404** (rien d'exposé).
 - [x] Aucun réglage manuel de Pages nécessaire (API a suffi) — rien à logger dans `docs/solutions/`.
 
@@ -269,7 +269,7 @@ vérification manuelle en Phase 4. Aucune ne menace l'approche.
 - **Phase 4 exit :** ✅ repo créé, `main` poussé, Pages = Actions, run vert (commit
   `5a5310a`), site visible sur le sous-chemin, 17 liens annexe B OK en prod (200),
   `lang=fr` + index Pagefind FR, 0 archives exposé (404).
-  → **Proof-slice atteint.** Résidu : 1 check UI in-browser (recherche accentuée).
+  → **Proof-slice atteint — 100% vérifié** (recherche accentuée UI confirmée en prod).
   Candidat `/compound` (recette « docs toolkit → Starlight/GH Pages bun », + 2 gotchas :
   canari `starlight-links-validator`, locale `root` pour Pagefind FR). Débloque STORY-008.
 
