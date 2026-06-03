@@ -8,11 +8,12 @@ autres projets du labo.
 > Concerne le site (config Astro, Pagefind, GH Action, liens cassés au build).
 > Le `solutions/` du **contenu de migration** est ailleurs : `src/content/docs/solutions/`.
 
-## Candidat `/compound` déjà identifié
+## Solutions capturées
 
-La recette « publier un dossier `docs/` toolkit (guide + substrat) en Starlight /
-GitHub Pages avec toolchain bun, sans exposer `archives/` » est réutilisable —
-à capturer une fois le proof-slice validé (cf. brainstorm, section *Candidat `/compound`*).
+- [`starlight-gh-pages-bun.md`](starlight-gh-pages-bun.md) — recette « docs Starlight
+  → GitHub Pages → bun » + 3 pièges silencieux (canari de liens inexistant par
+  défaut, Pagefind en anglais, sidebar autogenerate v0.39). Capturé au proof-slice
+  validé (commits `92d5ea3..0c85222`).
 
 ## Convention
 
