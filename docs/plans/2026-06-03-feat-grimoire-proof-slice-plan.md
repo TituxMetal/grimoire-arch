@@ -2,7 +2,7 @@
 title: "feat: publier le proof-slice grimoire-arch (build + sidebar héros + deploy GH Pages)"
 type: plan
 date: 2026-06-03
-status: in_progress
+status: complete
 brainstorm: ../../../_INCUBATOR/2026-06-02-wiki-migration-arch-starlight-brainstorm.md
 architecture: ../architecture/grimoire-arch.md
 stories: ../stories/grimoire-arch.md
@@ -145,21 +145,15 @@ de contenu qui doivent exister sous peine de casser le build.
 
 ### Phase 4 — Ship & verify (STORY-007) — actions sortantes, confirmer avant push
 
-- [ ] Créer le repo distant : `gh repo create TituxMetal/grimoire-arch --public --source=. --remote=origin` (ou créer puis `git remote add origin`). **Vérifier que le nom du repo est exactement `grimoire-arch`** (== `base`).
-- [ ] `git push -u origin main`.
-- [ ] Activer Pages, Source = **GitHub Actions** :
-      `gh api -X POST repos/TituxMetal/grimoire-arch/pages -f build_type=workflow`
-      (ou manuellement Settings → Pages → Source = GitHub Actions si l'API échoue).
-- [ ] Suivre le run : `gh run watch` — le job build+deploy doit passer vert.
-- [ ] Vérifier le site **sur le vrai sous-chemin** `https://TituxMetal.github.io/grimoire-arch/`
-      (la correction de `base` ne se voit pas en `localhost:4321/`).
-- [ ] Cliquer un lien de l'annexe B → ouvre le bon ADR (couture inter-dossiers OK en prod).
-- [ ] Recherche Pagefind : taper un **terme français accentué** (« récupération »,
-      « réseau ») → résultats corrects (accents/césure).
-- [ ] Confirmer la sidebar (ordre guide préservé, Coulisses subordonné) et
-      qu'**aucun fichier `archives/`** n'apparaît dans le site déployé.
-- [ ] (Hors-repo, documenter dans `docs/solutions/` si surprise) noter tout réglage
-      manuel de Pages pour reproductibilité.
+- [x] Repo distant créé : `gh repo create TituxMetal/grimoire-arch --public --source=. --remote=origin`. Nom vérifié == `grimoire-arch` == `base`. (Confirmation utilisateur obtenue avant l'action sortante.)
+- [x] `git push -u origin main` (credential helper : `gh auth setup-git`).
+- [x] Pages activé, Source = **GitHub Actions** : `gh api -X POST …/pages -f build_type=workflow` → `https://tituxmetal.github.io/grimoire-arch/`.
+- [x] Run suivi : build (`withastro/action@v6`, **bun auto-détecté → assumption Unverified levée**) + deploy verts, conclusion `success`.
+- [x] Site vérifié **sur le vrai sous-chemin** : `/`, `/guide/01…`, `/guide/annexe-b-adr/`, ADR → tous **200**.
+- [x] Couture inter-dossiers en prod : les **17 liens** de l'annexe B → `/grimoire-arch/adr/<slug>/`, tous **200**.
+- [x] **FR/Pagefind (défaut corrigé)** : le site sortait en `<html lang="en">` → Pagefind indexait en anglais. Fix `defaultLocale: 'root' + lang: 'fr'` → live `lang="fr"`, **index Pagefind `fr`** (22 pages). Termes accentués du slice (`système`, `données`, `sécurité`, `vérifier`) indexés. ⚠️ **Reste à faire (in-browser, 30 s) :** taper un terme accentué dans l'UI et confirmer les résultats — non automatisable (Pagefind = recherche navigateur WASM, pas d'API Node de search).
+- [x] Sidebar en prod : Guide (01→02→03→annexe B) avant Coulisses ; `/archives/` → **404** (rien d'exposé).
+- [x] Aucun réglage manuel de Pages nécessaire (API a suffi) — rien à logger dans `docs/solutions/`.
 
 ---
 
@@ -272,10 +266,12 @@ vérification manuelle en Phase 4. Aucune ne menace l'approche.
   retiré, `index.mdx` réparé, build vert, ordre sidebar vérifié, commit posé.
 - **Phase 3 exit :** `deploy.yml` présent (triggers + permissions + jobs corrects,
   0 npm), commit posé. (Pas de run encore — pas de remote.)
-- **Phase 4 exit :** repo créé, `main` poussé, Pages = Actions, run vert, site visible
-  sur le sous-chemin, liens annexe B OK en prod, Pagefind FR OK, 0 archives exposé.
-  → **Proof-slice atteint.** Candidat `/compound` (recette « docs toolkit → Starlight
-  /GH Pages bun »). Débloque STORY-008.
+- **Phase 4 exit :** ✅ repo créé, `main` poussé, Pages = Actions, run vert (commit
+  `5a5310a`), site visible sur le sous-chemin, 17 liens annexe B OK en prod (200),
+  `lang=fr` + index Pagefind FR, 0 archives exposé (404).
+  → **Proof-slice atteint.** Résidu : 1 check UI in-browser (recherche accentuée).
+  Candidat `/compound` (recette « docs toolkit → Starlight/GH Pages bun », + 2 gotchas :
+  canari `starlight-links-validator`, locale `root` pour Pagefind FR). Débloque STORY-008.
 
 ---
 
