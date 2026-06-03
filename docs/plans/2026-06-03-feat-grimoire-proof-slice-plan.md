@@ -119,26 +119,19 @@ de contenu qui doivent exister sous peine de casser le build.
 
 ### Phase 2 — Hero navigation + identité site (STORY-002)
 
-- [ ] `astro.config.mjs` : remplacer `site: 'https://USERNAME.github.io'` par
-      `site: 'https://TituxMetal.github.io'`. **`base: '/grimoire-arch'` est déjà
-      correct** — ne pas y toucher (gotcha : c'est le nom du repo, pas le dossier daté).
-- [ ] Remplacer la sidebar template par : groupe **« Guide »** avec items **explicites
-      ordonnés** (`guide/01-audit-baseline`, `guide/02-ext4-vers-btrfs`,
-      `guide/03-snapshots`, `guide/annexe-b-adr`) — **pas** autogenerate, pour
-      préserver l'ordre de lecture.
-- [ ] Ajouter un groupe **« Coulisses / journal »** subordonné, listé **après** Guide.
-      Au stade slice il n'y a pas de substrat : le laisser vide/minimal ou pointer un
-      placeholder — la taxonomie réelle est STORY-008. Le groupe Guide doit rester
-      visuellement premier.
-- [ ] Supprimer le contenu template : `src/content/docs/guides/example.md`,
-      `src/content/docs/reference/example.md`. Adapter `src/content/docs/index.mdx`
-      (la landing splash) pour qu'elle ne référence plus les liens d'exemple ni
-      `houston.webp` cassés — pointer le hero/CTA vers `guide/01-audit-baseline`.
-- [ ] (Optionnel) Ajuster `src/styles/custom.css` (accent color / quelques
-      `--sl-color-*`) — pas de Tailwind (ADR thème).
-- [ ] `bun run build` vert ; vérifier l'ordre sidebar (01→02→03→annexe B, Coulisses
-      après).
-- [ ] Commit : `feat(config): hero sidebar and GitHub Pages site URL, drop template content`
+- [x] `astro.config.mjs` : `site: 'https://TituxMetal.github.io'`. `base` intact.
+- [x] Sidebar : groupe **« Guide »** avec items explicites ordonnés (01→02→03→annexe B).
+- [x] Groupe **« Coulisses / journal »** subordonné (`collapsed`), **après** Guide.
+      Au stade slice, le seul substrat présent = les 17 ADR → autogenerate `adr/`.
+      **GOTCHA Starlight v0.39** : les groupes autogénérés *labellisés* sont supprimés.
+      Forme valide = `{ label, items: [{ autogenerate: { directory } }] }` (l'objet
+      `autogenerate` ne porte **pas** de `label`). Candidat `/compound`.
+- [x] Contenu template supprimé (`guides/example.md`, `reference/example.md` +
+      dossiers vides). `index.mdx` réécrit (splash FR, plus de `houston.webp` ni de
+      liens d'exemple ; hero → `guide/01`, CTA → annexe B).
+- [ ] (Optionnel, non fait) Ajustement `custom.css` — hors périmètre proof-slice.
+- [x] `bun run build` vert ; ordre sidebar vérifié (01→02→03→annexe B, Coulisses après).
+- [x] Commit : `feat(config): hero sidebar + GitHub Pages site URL, drop template content`
 
 ### Phase 3 — Deploy workflow (STORY-006)
 

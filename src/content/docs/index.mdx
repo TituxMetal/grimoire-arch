@@ -1,40 +1,30 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: Grimoire Arch
+description: Guide de migration Arch Linux — ext4 → BTRFS à subvolumes et station tiling.
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: |
+    Guide de migration Arch Linux : ext4 → BTRFS à subvolumes, snapshots
+    automatiques, et station de travail tiling. Une référence personnelle,
+    consultable depuis n'importe quel appareil pendant le chantier.
   actions:
     - text: Commencer le guide
       link: /grimoire-arch/guide/01-audit-baseline/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+    - text: Index des décisions (annexe B)
+      link: /grimoire-arch/guide/annexe-b-adr/
+      icon: document
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
-
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+<CardGrid>
+	<Card title="Migration du système de fichiers" icon="setting">
+		Passer d'une racine ext4 à un BTRFS découpé en subvolumes, sans destruction,
+		avec des snapshots automatiques avant chaque transaction pacman.
 	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="Décisions tracées" icon="open-book">
+		Chaque choix structurant est consigné comme ADR — voir l'[annexe B](/grimoire-arch/guide/annexe-b-adr/).
 	</Card>
 </CardGrid>
