@@ -9,7 +9,7 @@ Spec : `~/sandbox/grimoire/2026-06-07-spec-skill-publish.md`.
 
 | Source | Destination | Date | Mode |
 |---|---|---|---|
+| `~/sandbox/devbox/2026-06-04-reparation-boot-var-plein.md` | `src/content/docs/solutions/devbox/reparation-boot-var-plein.md` | 2026-06-07 | Coulisses |
 
-*(vide — aucune promotion encore ; premières candidates : prologue
-`~/sandbox/devbox/2026-06-04-reparation-boot-var-plein.md` en mode Coulisses,
-récit nvim en mode Récit quand la transition sera jugée stable.)*
+*(prochaine candidate : récit nvim en mode Récit quand la transition sera jugée
+stable — préalable atelier : structure acte II / tronc commun.)*
