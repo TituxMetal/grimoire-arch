@@ -42,6 +42,7 @@ Avant toute modification non triviale, lire dans cet ordre :
 - **Décision sur le build ou le deploy** → ouvrir un ADR dans `docs/adr/`. Format : `AAAA-MM-JJ-titre.md`.
 - **Problème de build diagnostiqué et résolu** → logger dans `docs/solutions/` (format problem→fix). Voir le README de `docs/solutions/`.
 - **Planification d'une tranche de travail** → écrire un plan dans `docs/plans/`. Le skill `/plan` écrit ici.
+- **Promouvoir une note du calepin/terrain vers le livre** → skill `/publish` (`.claude/skills/publish/SKILL.md`). À sens unique, une fois chacun ; registre dans `docs/promotions.md`. Jamais de re-promotion — après publication, le livre fait foi.
 - **Le lien `guide/annexe-b → ../adr/`** (17 occurrences) est la seule couture inter-dossiers du contenu. C'est aussi la seule cible du proof-slice. Si ce lien est cassé, le build `bun run build` doit le détecter — c'est le canari.
 
 ---

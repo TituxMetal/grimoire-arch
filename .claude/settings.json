@@ -12,7 +12,13 @@
       "Bash(git diff:*)",
       "Bash(git add:*)",
       "Bash(git log:*)",
-      "Read(//home/titux/migration-backup/docs/**)"
+      "Read(//home/titux/migration-backup/docs/**)",
+      "Read(//home/titux/sandbox/**)",
+      "Edit(//home/titux/sandbox/**)",
+      "Read(//home/titux/.config/nvim/docs/**)",
+      "Edit(//home/titux/.config/nvim/docs/**)",
+      "Read(//home/titux/migration-devbox/**)",
+      "Edit(//home/titux/migration-devbox/**)"
     ]
   },
   "extraKnownMarketplaces": {
