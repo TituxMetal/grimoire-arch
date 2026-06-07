@@ -104,22 +104,22 @@ promesses de contenu.
 ## Implementation Tasks
 
 ### Phase 1 — ADR site
-- [ ] Écrire `docs/adr/2026-06-07-structure-acte-2-sidebar.md` (Contexte / Décision
+- [x] Écrire `docs/adr/2026-06-07-structure-acte-2-sidebar.md` (Contexte / Décision
       Q1–Q6 / Conséquences / Alternatives écartées, + note d'interprétation ADR 0018+)
-- [ ] Commit (English) : `docs(adr): act II structure — four sidebar groups, additive only`
+- [x] Commit (English) : `docs(adr): act II structure — four sidebar groups, additive only`
 
 ### Phase 2 — Structure sidebar + index (dépend de Phase 1)
-- [ ] `astro.config.mjs` : renommer `label: 'Guide'` → `'Guide — Acte I (MBP)'`
-- [ ] `astro.config.mjs` : ajouter le groupe `Acte II — Devbox` (items explicites,
+- [x] `astro.config.mjs` : renommer `label: 'Guide'` → `'Guide — Acte I (MBP)'`
+- [x] `astro.config.mjs` : ajouter le groupe `Acte II — Devbox` (items explicites,
       `{ slug: 'devbox' }`) après le groupe Guide
-- [ ] `astro.config.mjs` : ajouter le groupe `Tronc commun` (items explicites,
+- [x] `astro.config.mjs` : ajouter le groupe `Tronc commun` (items explicites,
       `{ slug: 'tronc-commun' }`) après Acte II, avant Coulisses
-- [ ] Écrire `src/content/docs/devbox/index.md` (frontmatter `title:` seul ; renvois
+- [x] Écrire `src/content/docs/devbox/index.md` (frontmatter `title:` seul ; renvois
       ch. 8–13 en liens `/grimoire-arch/guide/...`)
-- [ ] Écrire `src/content/docs/tronc-commun/index.md` (frontmatter `title:` seul)
-- [ ] `bun run build` vert (canari liens inclus)
-- [ ] Vérifier qu'aucune URL acte I n'a changé (le diff ne touche que labels + ajouts)
-- [ ] Commit : `feat(sidebar): add act II and common-trunk groups with landing pages`
+- [x] Écrire `src/content/docs/tronc-commun/index.md` (frontmatter `title:` seul)
+- [x] `bun run build` vert (canari liens inclus) — 59 pages, « All internal links are valid »
+- [x] Vérifier qu'aucune URL acte I n'a changé (le diff ne touche que labels + ajouts)
+- [x] Commit : `feat(sidebar): add act II and common-trunk groups with landing pages`
 
 ### Phase 3 — Étape slug sidebar dans /publish (dépend de Phase 2)
 - [ ] `.claude/skills/publish/SKILL.md` : insérer l'étape « Slug sidebar » entre

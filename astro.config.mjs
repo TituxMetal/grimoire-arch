@@ -29,13 +29,14 @@ export default defineConfig({
 			// seam and for STORY-008 propagation. Internal content links must be
 			// root-relative WITH base. See docs/adr/2026-06-03-link-validation-canary.md
 			plugins: [starlightLinksValidator()],
-			// Sidebar: the Guide is the hero — explicit ordered items preserve the
-			// linear reading order (NOT autogenerate). The migration substrate
-			// (here: the ADRs) lives in a subordinate "Coulisses" group listed AFTER,
-			// collapsed, so the guide never drowns. Full substrate taxonomy = STORY-008.
+			// Sidebar: the book in acts (ADR-0007) — act I, act II, common trunk,
+			// then the substrate. Hero groups use explicit ordered items to preserve
+			// the deliberate reading order (NOT autogenerate). The migration substrate
+			// lives in a subordinate "Coulisses" group listed LAST, collapsed, so the
+			// book never drowns.
 			sidebar: [
 				{
-					label: 'Guide',
+					label: 'Guide — Acte I (MBP)',
 					items: [
 						{ slug: 'guide' },
 						{ slug: 'guide/01-audit-baseline' },
@@ -54,6 +55,19 @@ export default defineConfig({
 						{ slug: 'guide/annexe-a-materiel-ancien' },
 						{ slug: 'guide/annexe-b-adr' },
 					],
+				},
+				{
+					// Act II — the devbox delta narrative (ADR-0007). Explicit items,
+					// same doctrine as act I: chapters arrive out of order via /publish
+					// (its sidebar-slug step appends each promoted slug here).
+					label: 'Acte II — Devbox',
+					items: [{ slug: 'devbox' }],
+				},
+				{
+					// Common trunk — machine-agnostic narratives (nvim, dotfiles…).
+					// Born with its index only; grows by promotion. See ADR-0007.
+					label: 'Tronc commun',
+					items: [{ slug: 'tronc-commun' }],
 				},
 				{
 					// Migration substrate — subordinate to the Guide hero: listed AFTER,
