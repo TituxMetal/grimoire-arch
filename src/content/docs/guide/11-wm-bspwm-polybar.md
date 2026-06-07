@@ -270,7 +270,7 @@ existe, c'est le binding qui reste à poser :
 | Fonctionnalité i3 | Mécanisme bspwm | État actuel |
 |---|---|---|
 | Resize | `bspc node -z <dir> …` | absent |
-| Drag souris flottantes | `bspc config pointer_modifier` + `pointer_action1 move` | absent |
+| Drag souris flottantes | **défauts bspwm** (`pointer_modifier mod4`, `pointer_action1 move`, `pointer_action3 resize_corner`) | **en place** — natif, rien à poser : `super+clic gauche` = déplacer, `super+clic droit` = redimensionner par le coin (vérifié 06/06) |
 | Scratchpad | scripts `scratchpad` (terminal) + dropdowns d'app, sous `super + alt` | **en place** — voir `docs/solutions/bspwm/scratchpad-dropdowns-fenetres-cachees.md` (4 pièges résolus) |
 | Stacked/tabbed | `bspwm-tabs` (compilé depuis JAGL) ou monocle | **adopté** — `super+ctrl+a` / `super+ctrl+d` (ADR 0017) |
 | Preselect (split) | `bspc node -p <dir>` | absent |

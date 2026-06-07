@@ -7,10 +7,10 @@ related:
   - docs/plans/2026-05-31-feat-scratchpad-bspwm-plan.md
   - docs/findings/2026-05-30-bspwm-reload-et-verdicts-phase6.md
 status: >-
-  Compound de fin de session : la discussion a dérivé sur PLUSIEURS sujets distincts. Ce doc est la
-  CARTE pour les reprendre séparément. §1 scratchpad = brainstorm+plan faits, prêt /work. §2 Markdown
-  HD3000 = tranché. §3 nvim-reader = NOUVEAU, le plus ouvert, à brainstormer (GÉNÉRAL, pas juste le guide).
-  §4 alacritty hints = écarté. §5 glow = adopté.
+  Truth-up 2026-06-07 : §1 scratchpad = SHIPPÉ (solution publiée, 4 pièges résolus) ; §3 nvim-reader =
+  brainstormé + planifié le 06-07 dans le repo terrain ~/.config/nvim. §2 tranché, §4 écarté, §5 adopté
+  — inchangés. (Origine : carte des fils de la session du 31/05, pour reprendre séparément des sujets
+  mélangés.)
 ---
 
 
@@ -19,6 +19,10 @@ status: >-
 > **sépare** : chaque fil ci-dessous est autonome, avec son état et son point de reprise.
 
 ## 1. Scratchpad bspwm — FAIT (discovery + plan), prêt pour `/work`
+
+> **MAJ 2026-06-07** : `/work` exécuté, scratchpad **en place** (famille `super + alt`, terminal
+> escamotable + dropdowns) — 4 pièges résolus dans
+> [la solution publiée](/grimoire-arch/solutions/bspwm/scratchpad-dropdowns-fenetres-cachees/).
 
 - **Artefacts** : brainstorm `docs/brainstorms/2026-05-31-scratchpad-bspwm-brainstorm.md` + plan approuvé
   `docs/plans/2026-05-31-feat-scratchpad-bspwm-plan.md` (confiance haute).
@@ -48,6 +52,10 @@ status: >-
 - **Déjà en mémoire** : `[[hd3000-markdown-viewers]]`. **Rien à reprendre** (clos), sauf le ménage `-Rns`.
 
 ## 3. Neovim comme LECTEUR/NAVIGATEUR Markdown — NOUVEAU, le plus ouvert → à brainstormer
+
+> **MAJ 2026-06-07** : brainstormé et planifié le 06-07 — les artefacts vivent dans le repo
+> **terrain** `~/.config/nvim/docs/{brainstorms,plans}/` (le travail se fait là où vivent les
+> fichiers ; le livre n'en recevra qu'une éventuelle promotion, plus tard).
 
 - **Besoin (titux insiste)** : que **nvim RENDE** le Markdown (pas juste le code brut) **ET** suive les
   **liens internes inter-fichiers**, rendus. **GÉNÉRAL, pas juste pour le guide** — pour tout `.md`.

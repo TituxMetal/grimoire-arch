@@ -5,8 +5,9 @@ date: 2026-05-30
 related:
   - docs/plans/2026-05-30-feat-theme-dark-global-plan.md
 status: >-
-  Diagnostic confirmé en lecture système (read-only). Alimente le plan "dark global". Décision
-  A vs B PAS encore prise (Phase 0 = expérimentation A/B à faire). Rien d'implémenté.
+  RÉSOLU (truth-up 2026-06-07) — le modèle B a été acté (ADR 0014, sans GTK_THEME) et implémenté ;
+  solution publiée : solutions/theme/dark-global-gtk-qt-libadwaita.md. Le diagnostic ci-dessous reste
+  la photographie système du 30/05 qui a alimenté la décision.
 ---
 
 

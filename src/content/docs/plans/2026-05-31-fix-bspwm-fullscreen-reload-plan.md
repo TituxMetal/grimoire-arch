@@ -212,18 +212,24 @@ restauration B sur un autre critère (classe de fenêtre / dernière focalisée)
 
 ## Acceptance Criteria
 
-- [ ] Après `super + shift + r` avec une fenêtre en **plein écran** ouverte : `bspc query -T -d` montre
+> **Truth-up 2026-06-07** — cases cochées d'après la vérification live du 01/06 (cf. `status_note` :
+> plusieurs cycles plein écran/tuilé + reload + bascule de thème) ; `reload --check` revérifié vert ce
+> jour. Le critère save/restore est caduc (prémisse fausse), marqué tel quel.
+
+- [x] Après `super + shift + r` avec une fenêtre en **plein écran** ouverte : `bspc query -T -d` montre
   toujours `state=fullscreen` (pas `tiled` + `lastState=fullscreen`) ; la barre reste cachée, pas de
   bordure ; aucune retombée visuelle.
-- [ ] Après `super + shift + r` : `pgrep` montre que picom / polybar / sxhkd **n'ont pas changé de PID**
+- [x] Après `super + shift + r` : `pgrep` montre que picom / polybar / sxhkd **n'ont pas changé de PID**
   (pas de respawn).
-- [ ] Une bascule de thème via `thememenu` met à jour les couleurs **et** laisse le plein écran intact.
-- [ ] `reload --restart` ré-applique le plein écran après le `bspc wm -r` (et flottant/sticky si T6 l'a
-  montré nécessaire).
-- [ ] Un bloc de config syntaxiquement invalide (`bspwmrc`, `colors.sh`, sxhkdrc, polybar) **refuse** le
+- [x] Une bascule de thème via `thememenu` met à jour les couleurs **et** laisse le plein écran intact.
+- [x] ~~`reload --restart` ré-applique le plein écran après le `bspc wm -r` (et flottant/sticky si T6 l'a
+  montré nécessaire).~~ **Caduc** — le save/restore a été retiré : `bspc wm -r` préserve nativement le
+  plein écran ; le vrai bug était l'empilement polybar (`wm-restack`), cf. `status_note`.
+- [x] Un bloc de config syntaxiquement invalide (`bspwmrc`, `colors.sh`, sxhkdrc, polybar) **refuse** le
   reload sur les deux chemins, avec notif dunst nommant le bloc fautif — session et sxhkd intacts.
-- [ ] `reload --check` (dry-run) fonctionne toujours hors session.
-- [ ] `reload-sur.md` et `guide/11` décrivent la nouvelle architecture ; le finding est marqué RÉSOLU.
+- [x] `reload --check` (dry-run) fonctionne toujours hors session. *(Revérifié 2026-06-07 : « Validation
+  OK », exit 0.)*
+- [x] `reload-sur.md` et `guide/11` décrivent la nouvelle architecture ; le finding est marqué RÉSOLU.
 
 ## Risk Analysis
 
