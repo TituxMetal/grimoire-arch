@@ -2,7 +2,7 @@
 title: "feat: structure acte II — sidebar quatre groupes, devbox/, tronc-commun/, étape slug sidebar dans /publish"
 type: plan
 date: 2026-06-07
-status: in_progress
+status: complete
 brainstorm: ../brainstorms/2026-06-07-structure-acte-2-brainstorm.md
 confidence: high
 ---
@@ -122,12 +122,13 @@ promesses de contenu.
 - [x] Commit : `feat(sidebar): add act II and common-trunk groups with landing pages`
 
 ### Phase 3 — Étape slug sidebar dans /publish (dépend de Phase 2)
-- [ ] `.claude/skills/publish/SKILL.md` : insérer l'étape « Slug sidebar » entre
-      Adaptation et Trace (déclencheur hero-only, geste a–d, filet build)
-- [ ] Mettre à jour la note « structure manquante » de l'étape Routage (destinations
-      hero désormais réelles)
-- [ ] Relire : le routage doit toujours se dire en une phrase (critère de rejet)
-- [ ] Commit : `feat(skill): add sidebar-slug step to /publish for hero destinations`
+- [x] `.claude/skills/publish/SKILL.md` : insérer l'étape « Slug sidebar » entre
+      Adaptation et Trace (déclencheur hero-only, geste a–d, filet build) — pipeline
+      en six temps, renumérotation 4→5, 5→6
+- [x] Mettre à jour la note « structure manquante » de l'étape Routage (destinations
+      hero désormais réelles, règle conservée pour les structures futures)
+- [x] Relire : le routage se dit toujours en une phrase (table de routage inchangée)
+- [x] Commit : `feat(skill): add sidebar-slug step to /publish for hero destinations`
 
 ---
 

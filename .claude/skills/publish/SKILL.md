@@ -21,7 +21,7 @@ Spec d'origine : `~/sandbox/grimoire/2026-06-07-spec-skill-publish.md` (validée
   dans le home.
 - **Pas de déploiement** : commit, jamais de push. Titux décide quand le site bouge.
 
-## Pipeline en cinq temps
+## Pipeline en six temps
 
 ### 1. Entrée
 
@@ -56,10 +56,11 @@ Deux modes :
 **Toujours** confirmer destination + mode via AskUserQuestion avant d'écrire quoi
 que ce soit dans le repo.
 
-Si la destination exige une structure qui n'existe pas encore (groupe sidebar
-« tronc commun », structure acte II) : le **signaler et s'arrêter** — c'est un
-préalable atelier (brainstorm court + ADR dans `docs/adr/`), pas à `/publish`
-d'inventer la structure du livre.
+Les destinations hero `devbox/` et `tronc-commun/` existent — structure posée en
+atelier (ADR-0007, `docs/adr/2026-06-07-structure-acte-2-sidebar.md`). Si une
+destination future exige une structure qui n'existe pas encore : le **signaler et
+s'arrêter** — c'est un préalable atelier (brainstorm court + ADR dans `docs/adr/`),
+pas à `/publish` d'inventer la structure du livre.
 
 ### 3. Adaptation
 
@@ -71,13 +72,30 @@ d'inventer la structure du livre.
   `/grimoire-arch/...` (canari `starlight-links-validator`,
   `docs/adr/2026-06-03-link-validation-canary.md`). Un lien vers un fichier **non
   publié** → le neutraliser en texte simple et le signaler à Titux.
-- **Sidebar** : Coulisses et `adr/` sont en `autogenerate` — rien à faire. Un
-  chapitre (mode Récit) exige une entrée explicite dans `astro.config.mjs` → la
-  proposer, en préservant l'ordre linéaire de lecture (le guide est le hero).
+- **Sidebar** : Coulisses et `adr/` sont en `autogenerate` — rien à faire ici. Une
+  destination hero (`devbox/`, `tronc-commun/`) exige une entrée explicite dans
+  `astro.config.mjs` → c'est l'étape 4 (slug sidebar).
 - **Mode Récit** : rédiger le chapitre à partir de la source (et des autres sources
   qu'il consomme, le cas échéant), dans la langue et le ton du guide existant.
 
-### 4. Trace anti-republication
+### 4. Slug sidebar — destinations hero uniquement
+
+Ne concerne que les fichiers écrits sous `devbox/` ou `tronc-commun/` (groupes à
+items explicites, ADR-0007). Coulisses et `adr/` : étape sautée — l'`autogenerate`
+fait le travail.
+
+1. **Calculer le slug** : chemin relatif à `src/content/docs/`, sans extension
+   (ex. `devbox/02-reseau` pour `src/content/docs/devbox/02-reseau.md`).
+2. **Lire le groupe cible** dans `astro.config.mjs` et présenter ses items dans
+   l'ordre actuel.
+3. **Proposer la position** via AskUserQuestion — défaut : **fin de groupe**. Les
+   chapitres arrivent dans le désordre ; l'ordre narratif est arbitré par Titux,
+   jamais déduit.
+4. **Ajouter** `{ slug: '<slug>' }` à la position confirmée.
+
+Filet : un slug mal formé fait échouer le `bun run build` de l'étape 6.
+
+### 5. Trace anti-republication
 
 Les deux gestes, systématiquement (coût marginal) :
 
@@ -93,7 +111,7 @@ Les deux gestes, systématiquement (coût marginal) :
 Si un README index existe dans le dossier de la source et y liste la note → passer
 sa ligne au statut **promu** (cycle de vie du calepin : vivant / clos / promu).
 
-### 5. Commit
+### 6. Commit
 
 1. `bun run build` — DOIT être vert (le canari liens est le critère d'acceptation).
 2. `grep -rn '^slug:' src/content/docs` — doit rester vide.
