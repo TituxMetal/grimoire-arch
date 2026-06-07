@@ -14,6 +14,10 @@ autres projets du labo.
   → GitHub Pages → bun » + 3 pièges silencieux (canari de liens inexistant par
   défaut, Pagefind en anglais, sidebar autogenerate v0.39). Capturé au proof-slice
   validé (commits `92d5ea3..0c85222`).
+- [`pattern-structure-d-abord-promotion-ensuite.md`](pattern-structure-d-abord-promotion-ensuite.md)
+  — pattern de **workflow** (écart assumé au périmètre build) : poser les contenants
+  en geste atelier avant que le pipeline de promotion ne livre. Capturé à la pose de
+  l'acte II (commits `e98a3ca..335bf65`) ; validation à l'usage pendante.
 
 ## Convention
 
