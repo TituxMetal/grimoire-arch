@@ -10,6 +10,13 @@ export default defineConfig({
 	// `base` MUST match the GitHub repo name (`grimoire-arch`), NOT the dated
 	// local folder. The site is served at https://TituxMetal.github.io/grimoire-arch/.
 	base: '/grimoire-arch',
+	// External links: open in new tab. rehype-external-links adds
+	// target="_blank" rel="noopener noreferrer" to every outbound <a>.
+	markdown: {
+		rehypePlugins: [
+			['rehype-external-links', { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+		],
+	},
 	integrations: [
 		starlight({
 			title: 'Grimoire Arch',
@@ -80,12 +87,12 @@ export default defineConfig({
 					label: 'Coulisses / journal',
 					collapsed: true,
 					items: [
-						{ label: 'Brainstorms', items: [{ autogenerate: { directory: 'brainstorms' } }] },
-						{ label: 'Findings', items: [{ autogenerate: { directory: 'findings' } }] },
-						{ label: 'Plans', items: [{ autogenerate: { directory: 'plans' } }] },
-						{ label: 'Solutions', items: [{ autogenerate: { directory: 'solutions' } }] },
-						{ label: 'Stories', items: [{ autogenerate: { directory: 'stories' } }] },
-						{ label: 'Décisions (ADR)', items: [{ autogenerate: { directory: 'adr' } }] },
+						{ label: 'Brainstorms', collapsed: true, items: [{ autogenerate: { directory: 'brainstorms' } }] },
+						{ label: 'Findings', collapsed: true, items: [{ autogenerate: { directory: 'findings' } }] },
+						{ label: 'Plans', collapsed: true, items: [{ autogenerate: { directory: 'plans' } }] },
+						{ label: 'Solutions', collapsed: true, items: [{ autogenerate: { directory: 'solutions' } }] },
+						{ label: 'Stories', collapsed: true, items: [{ autogenerate: { directory: 'stories' } }] },
+						{ label: 'Décisions (ADR)', collapsed: true, items: [{ autogenerate: { directory: 'adr' } }] },
 					],
 				},
 			],
