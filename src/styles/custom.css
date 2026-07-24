@@ -26,21 +26,22 @@
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-	--sl-color-gray-1: hsl(224, 22%, 96%); /* texte principal */
-	--sl-color-gray-2: hsl(224, 8%, 80%);  /* texte secondaire */
-	--sl-color-gray-3: hsl(224, 6%, 58%);  /* texte atténué */
-	--sl-color-gray-4: hsl(224, 7%, 34%);  /* bordures / séparateurs */
-	--sl-color-gray-5: hsl(224, 10%, 20%); /* fond inline-code */
-	--sl-color-gray-6: hsl(224, 14%, 14%); /* fond nav / sidebar */
+	--hue-gray: 224; /* teinte commune de la palette de gris */
+	--sl-color-gray-1: hsl(var(--hue-gray), 22%, 96%); /* texte principal */
+	--sl-color-gray-2: hsl(var(--hue-gray), 8%, 80%);  /* texte secondaire */
+	--sl-color-gray-3: hsl(var(--hue-gray), 6%, 58%);  /* texte atténué */
+	--sl-color-gray-4: hsl(var(--hue-gray), 7%, 34%);  /* bordures / séparateurs */
+	--sl-color-gray-5: hsl(var(--hue-gray), 10%, 20%); /* fond inline-code */
+	--sl-color-gray-6: hsl(var(--hue-gray), 14%, 14%); /* fond nav / sidebar */
 }
 
 :root[data-theme='light'] {
-	--sl-color-gray-1: hsl(224, 16%, 14%); /* texte principal */
-	--sl-color-gray-2: hsl(224, 12%, 20%); /* texte secondaire */
-	--sl-color-gray-3: hsl(224, 8%, 34%);  /* texte atténué */
-	--sl-color-gray-4: hsl(224, 6%, 58%);  /* bordures / séparateurs */
-	--sl-color-gray-5: hsl(224, 6%, 80%);  /* fond inline-code */
-	--sl-color-gray-6: hsl(224, 22%, 96%); /* fond nav / sidebar */
+	--sl-color-gray-1: hsl(var(--hue-gray), 16%, 14%); /* texte principal */
+	--sl-color-gray-2: hsl(var(--hue-gray), 12%, 20%); /* texte secondaire */
+	--sl-color-gray-3: hsl(var(--hue-gray), 8%, 34%);  /* texte atténué */
+	--sl-color-gray-4: hsl(var(--hue-gray), 6%, 58%);  /* bordures / séparateurs */
+	--sl-color-gray-5: hsl(var(--hue-gray), 6%, 80%);  /* fond inline-code */
+	--sl-color-gray-6: hsl(var(--hue-gray), 22%, 96%); /* fond nav / sidebar */
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
