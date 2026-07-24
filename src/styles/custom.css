@@ -18,3 +18,47 @@
 	--sl-color-accent: #2563eb;
 	--sl-color-accent-high: #16335c;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * C.6 — Palette de gris : contraste légèrement accru dans les deux thèmes.
+ *        Les tokens --sl-color-gray-1 (texte) à --sl-color-gray-6 (fond)
+ *        sont écartés d'environ 2-4 points de luminosité.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+	--sl-color-gray-1: hsl(224, 22%, 96%); /* texte principal */
+	--sl-color-gray-2: hsl(224, 8%, 80%);  /* texte secondaire */
+	--sl-color-gray-3: hsl(224, 6%, 58%);  /* texte atténué */
+	--sl-color-gray-4: hsl(224, 7%, 34%);  /* bordures / séparateurs */
+	--sl-color-gray-5: hsl(224, 10%, 20%); /* fond inline-code */
+	--sl-color-gray-6: hsl(224, 14%, 14%); /* fond nav / sidebar */
+}
+
+:root[data-theme='light'] {
+	--sl-color-gray-1: hsl(224, 16%, 14%); /* texte principal */
+	--sl-color-gray-2: hsl(224, 12%, 20%); /* texte secondaire */
+	--sl-color-gray-3: hsl(224, 8%, 34%);  /* texte atténué */
+	--sl-color-gray-4: hsl(224, 6%, 58%);  /* bordures / séparateurs */
+	--sl-color-gray-5: hsl(224, 6%, 80%);  /* fond inline-code */
+	--sl-color-gray-6: hsl(224, 22%, 96%); /* fond nav / sidebar */
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * C.7 — Taille de police : corps légèrement agrandi (16px → 17px).
+ *        Les titres suivent via les variables --sl-text-h1..h5
+ *        qui sont définies en fonction de --sl-text-2xl..5xl.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+	--sl-text-base: 1.0625rem; /* 17px */
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * C.8 — Layout grand écran : contenu élargi au-delà de 1920px.
+ *        Défaut Starlight : 45rem (720px). On passe à 60rem (960px)
+ *        pour exploiter les écrans larges sans ligne illisible.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+	--sl-content-width: 60rem;
+}
