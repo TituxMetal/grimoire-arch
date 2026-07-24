@@ -87,6 +87,7 @@ export default defineConfig({
 					label: 'Coulisses / journal',
 					collapsed: true,
 					items: [
+						{ slug: 'coulisses' },
 						{ label: 'Brainstorms', collapsed: true, items: [{ autogenerate: { directory: 'brainstorms' } }] },
 						{ label: 'Findings', collapsed: true, items: [{ autogenerate: { directory: 'findings' } }] },
 						{ label: 'Plans', collapsed: true, items: [{ autogenerate: { directory: 'plans' } }] },
