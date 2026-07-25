@@ -49,10 +49,18 @@
 
 /* C.7 — Font size: Starlight sets --sl-text-body: var(--sl-text-base) but never
  *       applies it to main prose (body/markdown inherit the browser 16px).
- *       Override the token AND apply it on .sl-markdown-content. */
+ *       Override the scale tokens (body + heading aliases h1→4xl … h5→lg)
+ *       AND apply body size on .sl-markdown-content. */
 
 :root {
-	--sl-text-base: 1.125rem; /* 18px — clearly larger than 16px default */
+	--sl-text-base: 1.125rem; /* 18px body (was 16px) */
+	/* ~12.5% step-up so h1–h5 track the larger body */
+	--sl-text-lg: 1.25rem; /* h5 */
+	--sl-text-xl: 1.375rem; /* h4 */
+	--sl-text-2xl: 1.6875rem; /* h3 */
+	--sl-text-3xl: 2.0625rem; /* h2 */
+	--sl-text-4xl: 2.5rem; /* h1 (narrow) */
+	--sl-text-5xl: 3rem; /* h1 (wide breakpoint) */
 }
 
 .sl-markdown-content {

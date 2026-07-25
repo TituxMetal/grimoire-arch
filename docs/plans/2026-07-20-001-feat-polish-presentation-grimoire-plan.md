@@ -175,11 +175,11 @@ Atelier unique additif pur : trois unités vérifiables isolément — U1 et U2 
 ## Definition of Done
 
 - [x] Les 6 sous-groupes Coulisses sont repliés par défaut dans la sidebar
-- [x] Les liens externes ouvrent dans un nouvel onglet
-- [x] La page `/coulisses/` existe avec intro + table des matières
-- [x] La palette de gris est ajustée dans les deux thèmes
-- [x] La taille de police est ajustée
-- [x] Le layout exploite les écrans >1920px
-- [x] `bun run build` passe sans erreur après chaque modification
-- [x] Aucun contenu existant sous `src/content/docs/` n'est modifié (sauf la nouvelle page `coulisses/index.md`)
-- [x] Aucune nouvelle dépendance npm n'est ajoutée sans nécessité démontrée pour B.3
+- [x] Les liens externes ouvrent dans un nouvel onglet (`rehype-external-links`, import explicite)
+- [x] La page `/coulisses/` existe avec intro + TOC **linkée** (6 landings section `sidebar.hidden`)
+- [x] La palette de gris est ajustée dans les deux thèmes (contraste **visible**, pas ±2–3 L)
+- [x] La taille de police est ajustée (body 18px appliqué sur `.sl-markdown-content` + échelle h1–h5)
+- [x] Le layout élargit le contenu (`--sl-content-width: 75rem` / 1200px ; défaut Starlight 45rem)
+- [x] `bun run build` passe sans erreur (66 pages, validator liens vert)
+- [x] Contenu guide existant intact ; ajouts limités à `coulisses/index.md` + 6 landings section
+- [x] Dépendance `rehype-external-links` ajoutée pour B.3 (nécessité démontrée)

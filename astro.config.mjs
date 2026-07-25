@@ -2,6 +2,9 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightLinksValidator from 'starlight-links-validator';
+// Explicit import so the plugin applies to both Markdown and MDX
+// (string form only covers .md and warns under @astrojs/mdx).
+import rehypeExternalLinks from 'rehype-external-links';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +17,7 @@ export default defineConfig({
 	// target="_blank" rel="noopener noreferrer" to every outbound <a>.
 	markdown: {
 		rehypePlugins: [
-			['rehype-external-links', { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+			[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
 		],
 	},
 	integrations: [
