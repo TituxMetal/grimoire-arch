@@ -2,48 +2,49 @@
 
 ## Mission
 
-Publier le guide de migration Arch Linux (ext4→BTRFS + station tiling) sous forme de site statique navigable sur GitHub Pages, auto-déployé au push via GitHub Actions. Le guide existe d'abord comme référence personnelle consultable depuis n'importe quel appareil pendant la migration de la machine de dev principale. C'est un projet autonome — pas un module, pas un portail.
+Publier le guide de migration Arch Linux (ext4→BTRFS + station tiling) sous forme de site statique navigable sur GitHub Pages, auto-déployé au push via GitHub Actions. Référence personnelle consultable pendant la migration — projet autonome, pas un module ni un portail.
 
 Stack : Astro Starlight, bun end-to-end, GitHub Actions (`oven-sh/setup-bun`).
+
+Doc de ce projet : **français**. Code (identifiants, commentaires, messages de commit/PR) : **anglais**.
 
 ---
 
 ## PIEGE CRITIQUE — deux arbres `docs/`, deux mondes distincts
 
-Ce repo contient **deux arbres qui partagent les mêmes noms de sous-dossiers** (`adr/`, `plans/`, `solutions/`). Ne jamais les confondre.
-
 | Arbre | Chemin | Contenu |
 |---|---|---|
-| **Doctrine du projet** | `docs/` | Décisions sur *comment on construit le site* — plans, ADRs Starlight/GH Pages, solutions de build |
-| **Contenu publié** | `src/content/docs/` | Le guide de migration copié de `~/migration-backup/docs/` — 13 chapitres + substrat |
+| **Doctrine du projet** | `docs/` | Comment on construit le site — plans, ADRs Starlight/GH Pages, solutions de build, registre des promotions |
+| **Contenu publié** | `src/content/docs/` | Le livre : guide (acte I), acte II devbox, tronc commun, coulisses / substrat migration |
 
 Règles absolues :
+
 - Le contenu de migration ne va **jamais** dans `docs/` — uniquement dans `src/content/docs/`.
-- Les ADRs de `docs/adr/` concernent le site (ex. choix Starlight). Les ADRs de `src/content/docs/adr/` concernent la migration Arch. Ce sont deux corpus différents.
-- `archives/` de la source n'est **jamais** copié, jamais publié, jamais lié — exclu par construction (filtre explicite dans la config Astro ou exclusion au moment du `cp`).
+- Les ADRs de `docs/adr/` concernent le site. Les ADRs de `src/content/docs/adr/` concernent la migration Arch.
+- Rien d'`archives/` ne doit apparaître sous `src/content/docs/`.
+- **Le livre dans ce repo est la source de vérité.** Pas de sync depuis un backup externe.
 
 ---
 
 ## Read First
 
-Avant toute modification non triviale, lire dans cet ordre :
-
-1. `../_INCUBATOR/2026-06-02-wiki-migration-arch-starlight-brainstorm.md` — le QUOI/POURQUOI verrouillé, la hiérarchie des buts, et le périmètre du proof-slice. Note : ce fichier sera déplacé vers `../_INCUBATOR/grimoire-arch/` (slug du projet, cf. invariant de l'incubateur) une fois la graine germée — chercher là si absent à la racine de l'incubateur.
-2. `docs/agents-md-standard.md` — les 12 checks PASS/FAIL qui gouvernent ce fichier et les artefacts de doctrine.
-3. `docs/adr/` — les décisions architecturales *du projet* (Astro config, GH Pages deploy strategy, content copy strategy).
+1. `../_INCUBATOR/grimoire-arch/2026-06-02-wiki-migration-arch-starlight-brainstorm.md` — QUOI/POURQUOI verrouillé (graine germée).
+2. `docs/agents-md-standard.md` — 12 checks PASS/FAIL de ce fichier.
+3. `docs/adr/` — décisions architecturales *du site*.
+4. Discipline webdev : `../AGENTS.md` — skills `ce-*`, OMP, conventions de l'espace projets.
 
 ---
 
 ## Task Routing
 
-- **Modifier la configuration Astro, le thème, ou le sidebar** → lire `docs/adr/` d'abord (des décisions de structure sont probablement actées). Modifier `astro.config.mjs` à la racine.
-- **Ajouter ou éditer du contenu guide** → travailler exclusivement sous `src/content/docs/guide/` ou `src/content/docs/` selon la cible. Ne jamais toucher `docs/` pour ça.
-- **Ajouter ou éditer le substrat (brainstorms, findings, plans, solutions, stories, adr de migration)** → travailler sous `src/content/docs/{brainstorms,findings,plans,solutions,stories,adr}/`. Le substrat est la section "Coulisses / journal" dans le sidebar — il ne doit pas noyer le guide hero.
-- **Décision sur le build ou le deploy** → ouvrir un ADR dans `docs/adr/`. Format : `AAAA-MM-JJ-titre.md`.
-- **Problème de build diagnostiqué et résolu** → logger dans `docs/solutions/` (format problem→fix). Voir le README de `docs/solutions/`.
-- **Planification d'une tranche de travail** → écrire un plan dans `docs/plans/`. Le skill `/plan` écrit ici.
-- **Promouvoir une note du calepin/terrain vers le livre** → skill `/publish` (`.claude/skills/publish/SKILL.md`). À sens unique, une fois chacun ; registre dans `docs/promotions.md`. Jamais de re-promotion — après publication, le livre fait foi.
-- **Le lien `guide/annexe-b → ../adr/`** (17 occurrences) est la seule couture inter-dossiers du contenu. C'est aussi la seule cible du proof-slice. Si ce lien est cassé, le build `bun run build` doit le détecter — c'est le canari.
+- **Config Astro, thème, sidebar** → `docs/adr/` puis `astro.config.mjs`.
+- **Contenu hero (guide / acte II / tronc commun)** → `src/content/docs/guide/`, `devbox/`, `tronc-commun/`. Jamais dans `docs/`.
+- **Substrat coulisses** → `src/content/docs/{brainstorms,findings,plans,solutions,stories,adr}/` (et landings `coulisses/`).
+- **Décision build/deploy** → ADR dans `docs/adr/` (`AAAA-MM-JJ-titre.md`).
+- **Problème de build résolu** → `docs/solutions/` (problem→fix).
+- **Plan de travail site** → `docs/plans/` via `ce-plan`.
+- **Promouvoir calepin/terrain → livre** → skill `publish` (canon : `.agents/skills/publish/SKILL.md` ; dual-path temporaire `.claude/skills/publish/`). Registre : `docs/promotions.md`. Une fois, sens unique ; après promo le livre fait foi.
+- **Couture canari** → liens guide ↔ ADR migration en root-relative avec base `/grimoire-arch/...` ; `bun run build` + `starlight-links-validator`.
 
 ---
 
@@ -51,110 +52,85 @@ Avant toute modification non triviale, lire dans cet ordre :
 
 ```
 20260602-grimoire-arch/
-├── astro.config.mjs          # config Starlight (sidebar, i18n, search)
-├── public/                   # assets statiques
+├── astro.config.mjs
+├── public/
 ├── src/
-│   └── content/
-│       └── docs/             # CONTENU PUBLIÉ — guide + substrat migration
-│           ├── guide/        # hero : 13 chapitres + annexes (ordre linéaire)
-│           ├── adr/          # ADRs migration Arch (≠ docs/adr/)
-│           ├── brainstorms/
-│           ├── findings/
-│           ├── plans/
-│           ├── solutions/
-│           └── stories/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml        # bun install + bun run build + GH Pages deploy
-├── docs/                     # DOCTRINE DU PROJET (pas du contenu publié)
+│   ├── styles/custom.css
+│   └── content/docs/          # LIVRE
+│       ├── guide/             # acte I (MBP) — ordre sidebar explicite
+│       ├── devbox/            # acte II — deltas devbox
+│       ├── tronc-commun/      # récits agnostiques machine
+│       ├── coulisses/         # index TOC substrat
+│       ├── brainstorms|findings|plans|solutions|stories|adr/
+├── .github/workflows/deploy.yml
+├── docs/                      # DOCTRINE SITE
 │   ├── agents-md-standard.md
-│   ├── adr/                  # ADRs sur le site lui-même
-│   ├── plans/                # plans de travail
-│   └── solutions/            # problem→fix log
-└── .claude/
-    └── settings.json         # allowlist bun, plugins projet-scoped
+│   ├── promotions.md          # registre /publish
+│   ├── adr|plans|solutions|brainstorms|…
+├── .agents/skills/publish/    # skill publish (canon OMP/Pi)
+└── .claude/skills/publish/    # dual-path temporaire — à supprimer après smoke OMP
 ```
-
-`astro.config.mjs`, `public/`, `src/`, et `.github/` n'existent pas encore — ils arrivent avec `bun create astro` (template starlight) à l'étape `marvin:scaffold`, **avant** `/plan` (le plan vise alors des fichiers réels).
 
 ---
 
-## Toolkit Output Paths
+## Agent tooling
 
-Les skills `/architect` et `/plan` tournent **dans ce projet** (pas à la racine du labo). Ils lisent le brainstorm originel via `$BRAINSTORM_PATH` :
+- **Harness :** OMP (défaut webdev). Pi en évaluation. **Pas** Claude Code / heart-of-gold sur ce projet.
+- **Plugin :** `compound-engineering` (`ce-*`) — installé au niveau user OMP, pas pin HoG projet.
+- **Skill locale :** `publish` uniquement (promotion calepin → livre). ≠ `ce-promote`.
+- Artefacts `ce-plan` / `ce-brainstorm` / `ce-compound` → sous `docs/` (doctrine site), pas sous `src/content/docs/`.
 
-```
-$BRAINSTORM_PATH = ../_INCUBATOR/2026-06-02-wiki-migration-arch-starlight-brainstorm.md
-```
-
-(Ce chemin est valide tant que la graine n'a pas germé. Après germination il sera dans `../_INCUBATOR/grimoire-arch/2026-06-02-wiki-migration-arch-starlight-brainstorm.md`.)
-
-| clé | valeur |
+| Sortie ce-* (doctrine site) | Chemin |
 |---|---|
-| `brainstorms_path` | `docs/brainstorms/` |
-| `architecture_path` | `docs/architecture/` |
-| `stories_path` | `docs/stories/` |
-| `plans_path` | `docs/plans/` |
-| `adr_path` | `docs/adr/` |
-| `solutions_path` | `docs/solutions/` |
+| brainstorms | `docs/brainstorms/` |
+| plans | `docs/plans/` |
+| solutions | `docs/solutions/` |
+| adr (site) | `docs/adr/` |
+
+Brainstorm produit d'origine : `../_INCUBATOR/grimoire-arch/2026-06-02-wiki-migration-arch-starlight-brainstorm.md`.
 
 ---
 
 ## Trust / Boundaries
 
-- **bun uniquement.** Aucune commande `npm`, `pnpm`, ou `yarn`. Le GH Action utilise `oven-sh/setup-bun`.
-- **Pas de Python, pas de Vue, pas de Next.** Stack : Astro Starlight + TypeScript/MDX + bun.
-- **`archives/`** du dépôt source ne doit jamais apparaître sous `src/content/docs/`. Le vérifier après tout `cp -r` depuis `~/migration-backup/docs/`.
-- **Le contenu publié est copié une fois** depuis `~/migration-backup/docs/`, puis édité directement dans ce repo. Pas de script de sync, pas de submodule. Ce repo devient la source de vérité unique.
-- **`lgdweb.fr` est hors périmètre** — au plus un lien sortant dans le footer plus tard. Ne pas architecturer pour ça maintenant.
+- **bun uniquement** (pas npm/pnpm/yarn).
+- Stack : Astro Starlight + TypeScript/MDX + bun.
+- Sources hors repo pour `/publish` : **`~/sandbox/**`** et **`~/.config/nvim/docs/**`** seulement. Le terrain devbox **est** `~/sandbox/devbox/` — pas d'autre racine (`migration-devbox` n'existe pas et n'existera pas).
+- **`lgdweb.fr` hors périmètre** (lien footer éventuel plus tard seulement).
 
 ---
 
 ## Verification
 
-Astro n'est pas encore scaffoldé. Jusqu'à ce que `bun create astro` ait tourné à l'étape `marvin:scaffold` :
-
-**Verification: TBD — lands when Astro is scaffolded.**
-
-Une fois scaffoldé, la commande de vérification est :
-
 ```
 bun run build
 ```
 
-Le build Astro échoue sur les liens internes cassés — c'est le check de correction principal pour un site docs. Vérifications complémentaires :
+Échoue sur liens internes cassés (`starlight-links-validator`) — critère principal.
 
-- Pagefind FR : chercher un terme français dans l'UI déployée, vérifier les résultats (accents, césure).
-- GH Pages : page visible au refresh après push sur `main`.
-
----
-
-## Done Criteria — Proof Slice
-
-Le proof-slice est atteint quand :
-
-1. 2–3 chapitres du guide + annexe B (qui contient les 17 liens `../adr/`) sont sous `src/content/docs/`.
-2. `bun run build` passe sans erreur de lien cassé.
-3. Le site est visible sur un vrai `*.github.io` au refresh après push.
-4. La navigation sidebar respecte l'ordre linéaire du guide (le hero ne se noie pas dans le substrat).
-
-Critères de rejet : un lien interne cassé ; un fichier `archives/` exposé ou lié ; le guide enterré derrière le substrat ; un build nécessitant autre chose que bun ; perte de l'ordre de lecture.
-
-Ensuite : propagation à l'ensemble de `src/content/docs/`.
+Compléments : Pagefind FR sur le site déployé ; page visible sur `*.github.io/grimoire-arch/` après push `main`.
 
 ---
 
-## First-time Setup
+## Done criteria — où on en est
 
-Les plugins projet-scoped sont déjà déclarés dans `.claude/settings.json` — un clone les obtient. Si tu dois les (ré)installer à la main :
+**Proof-slice initial : atteint** (guide + annexe B, build, GH Pages, sidebar hero vs coulisses).
 
-```
-# heart-of-gold-toolkit (deep-thought, marvin)
-/plugin marketplace add ondrej-svec/heart-of-gold-toolkit
-/plugin install deep-thought@heart-of-gold-toolkit
-/plugin install marvin@heart-of-gold-toolkit
-```
+Travail courant :
+
+1. Promotions calepin → livre (`publish`), surtout coulisses et chapitres acte II / tronc commun.
+2. Doctrine agent alignée OMP (cette carte) ; retirer le dual-path `.claude/` après smoke `publish` concluant.
+3. Pas de réintroduction heart-of-gold / Claude project plugins.
+
+Rejet permanent : lien interne cassé ; `archives/` exposé ; hero noyé par le substrat ; build hors bun ; `slug:` dans le frontmatter contenu.
 
 ---
 
-<!-- Drafted by marvin:harness-author for /home/titux/webdev/MBP/20260602-grimoire-arch/AGENTS.md on 2026-06-02. Edit freely — this comment is informational. -->
+## Maintenance de cette carte
+
+Mettre à jour `AGENTS.md` quand :
+
+- la sidebar ou la structure hero/coulisses change (`astro.config.mjs` / ADR site) ;
+- le dual-path `.claude/` est supprimé ;
+- une nouvelle skill projet apparaît sous `.agents/skills/` ;
+- la commande de vérif ou le base path GH Pages change.

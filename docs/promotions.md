@@ -1,15 +1,17 @@
 # Registre des promotions — calepin/terrain → livre
 
 Tableau de bord de ce qui a été promu vers `src/content/docs/` par la skill
-`/publish` (`.claude/skills/publish/SKILL.md`). Promotion **à sens unique, artefact
-par artefact, une fois chacun** — après promotion, **la version du livre fait foi**
-et la source ne bouge plus (bannière posée dans la source par la skill).
+`publish` (canon : `.agents/skills/publish/SKILL.md` ; dual-path temporaire
+`.claude/skills/publish/`). Promotion **à sens unique, artefact par artefact,
+une fois chacun** — après promotion, **la version du livre fait foi** et la
+source ne bouge plus (bannière posée dans la source par la skill).
 
 Spec : `~/sandbox/grimoire/2026-06-07-spec-skill-publish.md`.
+
+Sources autorisées : `~/sandbox/**`, `~/.config/nvim/docs/**` uniquement.
 
 | Source | Destination | Date | Mode |
 |---|---|---|---|
 | `~/sandbox/devbox/2026-06-04-reparation-boot-var-plein.md` | `src/content/docs/solutions/devbox/reparation-boot-var-plein.md` | 2026-06-07 | Coulisses |
 
-*(prochaine candidate : récit nvim en mode Récit quand la transition sera jugée
-stable — préalable atelier : structure acte II / tronc commun.)*
+*(prochaine candidate smoke OMP : p.ex. `~/sandbox/devbox/2026-07-16-priorite-lan-wifi-metrique-route.md` en coulisses — après validation découverte skill `.agents`.)*
