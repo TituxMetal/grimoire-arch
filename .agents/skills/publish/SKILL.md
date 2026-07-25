@@ -149,7 +149,3 @@ quand la source est sous `~/sandbox/` :
    `feat(content): promote boot-var-plein incident to solutions/devbox (coulisses mode)`.
 5. **Jamais de push.** Annoncer que le commit est posé et que le déploiement reste
    sous la main de Titux.
-3. Commit dans le grimoire, **message en anglais** (convention repo), ex. :
-   `feat(content): promote boot-var-plein incident to solutions/devbox (coulisses mode)`.
-4. **Jamais de push.** Annoncer que le commit est posé et que le déploiement reste
-   sous la main de Titux.
