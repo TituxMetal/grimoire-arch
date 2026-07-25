@@ -19,41 +19,49 @@
 	--sl-color-accent-high: #16335c;
 }
 
-/* C.6 — Gray palette: slightly increased contrast in both themes.
- *       Tokens --sl-color-gray-1 (text) through --sl-color-gray-6 (background)
- *       are spread ~2-4 lightness points wider than Starlight defaults. */
+/* C.6 — Gray palette: visibly higher contrast than Starlight defaults.
+ *       Prior values only moved lightness ~2–3pts (imperceptible). These
+ *       spreads are large enough to read as a real theme tweak.
+ *       Cascade note: this file is imported unlayered BEFORE Starlight's
+ *       @layer starlight.base props, so unlayered :root wins by design
+ *       (see Page.astro user-css import + layers.css). */
 
 :root {
 	--hue-gray: 224; /* shared gray hue */
-	--sl-color-gray-1: hsl(var(--hue-gray), 22%, 96%); /* main text */
-	--sl-color-gray-2: hsl(var(--hue-gray), 8%, 80%);  /* secondary text */
-	--sl-color-gray-3: hsl(var(--hue-gray), 6%, 58%);  /* muted text */
-	--sl-color-gray-4: hsl(var(--hue-gray), 7%, 34%);  /* borders / separators */
-	--sl-color-gray-5: hsl(var(--hue-gray), 10%, 20%); /* inline-code background */
-	--sl-color-gray-6: hsl(var(--hue-gray), 14%, 14%); /* nav / sidebar background */
+	/* dark: lighter text, deeper chrome */
+	--sl-color-gray-1: hsl(var(--hue-gray), 24%, 98%); /* near-white highlights */
+	--sl-color-gray-2: hsl(var(--hue-gray), 12%, 88%); /* body text (--sl-color-text) */
+	--sl-color-gray-3: hsl(var(--hue-gray), 8%, 68%);  /* muted text */
+	--sl-color-gray-4: hsl(var(--hue-gray), 8%, 30%);  /* borders / separators */
+	--sl-color-gray-5: hsl(var(--hue-gray), 12%, 17%); /* inline-code background */
+	--sl-color-gray-6: hsl(var(--hue-gray), 16%, 11%); /* nav / sidebar background */
 }
 
 :root[data-theme='light'] {
-	--sl-color-gray-1: hsl(var(--hue-gray), 16%, 14%); /* main text */
-	--sl-color-gray-2: hsl(var(--hue-gray), 12%, 20%); /* secondary text */
-	--sl-color-gray-3: hsl(var(--hue-gray), 8%, 34%);  /* muted text */
-	--sl-color-gray-4: hsl(var(--hue-gray), 6%, 58%);  /* borders / separators */
-	--sl-color-gray-5: hsl(var(--hue-gray), 6%, 80%);  /* inline-code background */
-	--sl-color-gray-6: hsl(var(--hue-gray), 22%, 96%); /* nav / sidebar background */
+	/* light: deeper text, cleaner chrome */
+	--sl-color-gray-1: hsl(var(--hue-gray), 20%, 10%); /* main text */
+	--sl-color-gray-2: hsl(var(--hue-gray), 14%, 18%); /* body text */
+	--sl-color-gray-3: hsl(var(--hue-gray), 10%, 34%); /* muted text */
+	--sl-color-gray-4: hsl(var(--hue-gray), 8%, 62%);  /* borders / separators */
+	--sl-color-gray-5: hsl(var(--hue-gray), 12%, 90%); /* inline-code background */
+	--sl-color-gray-6: hsl(var(--hue-gray), 24%, 97%); /* nav / sidebar background */
 }
 
-/* C.7 — Font size: body text slightly larger (16px -> 17px).
- *       Headings scale proportionally via --sl-text-h1..h5
- *       which derive from --sl-text-2xl..5xl. */
+/* C.7 — Font size: Starlight sets --sl-text-body: var(--sl-text-base) but never
+ *       applies it to main prose (body/markdown inherit the browser 16px).
+ *       Override the token AND apply it on .sl-markdown-content. */
 
 :root {
-	--sl-text-base: 1.0625rem;
+	--sl-text-base: 1.125rem; /* 18px — clearly larger than 16px default */
 }
 
-/* C.8 — Wide-screen layout: content widened beyond 1920px.
- *       Starlight default is 45rem (720px). Bumped to 60rem (960px)
- *       to use available screen space without unreadable line length. */
+.sl-markdown-content {
+	font-size: var(--sl-text-body);
+}
+
+/* C.8 — Wide-screen layout: content width (Starlight default 45rem / 720px).
+ *       75rem (1200px) uses large viewports without absurd line length. */
 
 :root {
-	--sl-content-width: 60rem;
+	--sl-content-width: 75rem;
 }
