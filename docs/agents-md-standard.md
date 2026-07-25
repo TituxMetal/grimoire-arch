@@ -1,6 +1,6 @@
 # Le standard AGENTS.md
 
-Ce que `../AGENTS.md` s'engage à respecter. Un `AGENTS.md` qui échoue à l'un de
+Ce que `AGENTS.md` à la racine du repo s'engage à respecter. Un `AGENTS.md` qui échoue à l'un de
 ces checks est de la dette de doctrine, pas une carte.
 
 ## Les 12 checks PASS/FAIL
@@ -28,7 +28,7 @@ dans `docs/adr/`, pas dans `AGENTS.md`. La procédure publish vit dans
 
 ## Déclencheurs de maintenance (ce projet)
 
-Mettre `../AGENTS.md` à jour quand :
+Mettre `AGENTS.md` (racine) à jour quand :
 
 - la sidebar ou la structure hero/coulisses change ;
 - le dual-path `.claude/skills/publish/` est retiré (canon = `.agents` only) ;

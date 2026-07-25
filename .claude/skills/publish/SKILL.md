@@ -40,9 +40,6 @@ Uniquement :
 | `~/sandbox/**` | calepin (ex. `~/sandbox/devbox/…` pour tout le terrain machine devbox) |
 | `~/.config/nvim/docs/**` | terrain nvim |
 
-**Il n'existe pas et n'existera pas de `~/migration-devbox`.** Le calepin devbox
-**est** `~/sandbox/devbox/`. Ne pas inventer d'autre racine source.
-
 ## Pipeline en six temps
 
 ### 1. Entrée
