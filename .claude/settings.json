@@ -6,31 +6,15 @@
       "Bash(bun run build)",
       "Bash(bun run dev:*)",
       "Bash(bun run preview:*)",
-      "Bash(bun create astro:*)",
       "Bash(bunx:*)",
       "Bash(git status)",
       "Bash(git diff:*)",
       "Bash(git add:*)",
       "Bash(git log:*)",
-      "Read(//home/titux/migration-backup/docs/**)",
       "Read(//home/titux/sandbox/**)",
       "Edit(//home/titux/sandbox/**)",
       "Read(//home/titux/.config/nvim/docs/**)",
-      "Edit(//home/titux/.config/nvim/docs/**)",
-      "Read(//home/titux/migration-devbox/**)",
-      "Edit(//home/titux/migration-devbox/**)"
+      "Edit(//home/titux/.config/nvim/docs/**)"
     ]
-  },
-  "extraKnownMarketplaces": {
-    "heart-of-gold-toolkit": {
-      "source": {
-        "source": "github",
-        "repo": "ondrej-svec/heart-of-gold-toolkit"
-      }
-    }
-  },
-  "enabledPlugins": {
-    "deep-thought@heart-of-gold-toolkit": true,
-    "marvin@heart-of-gold-toolkit": true
   }
 }
