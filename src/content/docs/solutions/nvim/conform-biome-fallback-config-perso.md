@@ -13,8 +13,6 @@ severity: low
 related: []
 ---
 
-# Conform + Biome : fallback vers la config perso hors projet
-
 ## Problème
 
 Dans VSCode, le formatage suit la config Biome du projet quand elle existe,

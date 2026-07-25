@@ -37,6 +37,12 @@
 	--sl-color-gray-6: hsl(var(--hue-gray), 16%, 11%); /* nav / sidebar background */
 }
 
+/* Soften pure #fff used by PageTitle + markdown h1–h6 (Starlight --sl-color-white).
+ * 100% white at 2.5–3rem burns on dark chrome. Light theme keeps Starlight ink. */
+:root {
+	--sl-color-white: hsl(var(--hue-gray), 18%, 90%);
+}
+
 :root[data-theme='light'] {
 	/* light: deeper text, cleaner chrome */
 	--sl-color-gray-1: hsl(var(--hue-gray), 20%, 10%); /* main text */
@@ -45,6 +51,7 @@
 	--sl-color-gray-4: hsl(var(--hue-gray), 8%, 62%);  /* borders / separators */
 	--sl-color-gray-5: hsl(var(--hue-gray), 12%, 90%); /* inline-code background */
 	--sl-color-gray-6: hsl(var(--hue-gray), 24%, 97%); /* nav / sidebar background */
+	--sl-color-white: hsl(224, 10%, 10%); /* Starlight light ink — do not inherit dark soften */
 }
 
 /* C.7 — Font size: Starlight sets --sl-text-body: var(--sl-text-base) but never
