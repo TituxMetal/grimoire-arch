@@ -114,25 +114,41 @@ Filet : un slug mal formé fait échouer le `bun run build` de l'étape 6.
 
 ### 5. Trace anti-republication
 
-Les deux gestes, systématiquement (coût marginal) :
+Les **trois** gestes, systématiquement (coût marginal) — aucun n'est optionnel
+quand la source est sous `~/sandbox/` :
 
 1. **Bannière dans la source** — écriture **hors repo** (calepin ou terrain nvim).
-   Sous OMP/Pi : pas d'allowlist Claude ; discipline uniquement — n'éditer la source
-   que pour cette bannière (et l'index README du calepin si besoin). Juste sous le titre :
+   Sous OMP/Pi : discipline uniquement — n'éditer la source que pour cette bannière
+   (et l'index calepin ci-dessous). Juste sous le titre :
    - mode Coulisses : `> Promu vers le livre le AAAA-MM-JJ → src/content/docs/<chemin>`
    - mode Récit : `> Consommé par le chapitre <X> le AAAA-MM-JJ → src/content/docs/<chemin>`
 
    Date réelle du jour (`date +%F`), pas une date inventée.
 2. **Registre** : ajouter une ligne à la table de `docs/promotions.md`
    (source → destination → date → mode).
+3. **Index calepin** — **obligatoire** si la source est sous `~/sandbox/**` :
+   - Fichier : **`~/sandbox/README.md`** (racine du calepin — **pas**
+     `~/sandbox/<sous-dossier>/README.md`, qui n'existe en général pas).
+   - Trouver la ligne qui liste la note (ex. `` `devbox/2026-07-21-….md` ``).
+   - Remplacer le statut `**vivant**` / `**clos**` / `**clos (…)**` par
+     `**promu (AAAA-MM-JJ)** vers le grimoire` (même date que la bannière).
+   - Pattern de référence déjà en place :
+     `` `devbox/2026-06-04-reparation-boot-var-plein.md` — **promu (2026-06-07)** vers le grimoire ``
+   - Si la ligne est absente de l'index : le signaler à Titux, ne pas inventer
+     d'entrée.
 
-Si un README index existe dans le dossier de la source et y liste la note → passer
-sa ligne au statut **promu** (cycle de vie du calepin : vivant / clos / promu).
+   Terrain nvim (`~/.config/nvim/docs/**`) : pas d'index calepin — étape sautée.
 
 ### 6. Commit
 
 1. `bun run build` — DOIT être vert (le canari liens est le critère d'acceptation).
 2. `grep -rn '^slug:' src/content/docs` — doit rester vide.
+3. Si source sous `~/sandbox/**` : `rg 'basename-sans-date|nom-fichier' ~/sandbox/README.md`
+   doit montrer `**promu (` — sinon **STOP**, corriger l'étape 5.3 avant commit.
+4. Commit dans le grimoire, **message en anglais** (convention repo), ex. :
+   `feat(content): promote boot-var-plein incident to solutions/devbox (coulisses mode)`.
+5. **Jamais de push.** Annoncer que le commit est posé et que le déploiement reste
+   sous la main de Titux.
 3. Commit dans le grimoire, **message en anglais** (convention repo), ex. :
    `feat(content): promote boot-var-plein incident to solutions/devbox (coulisses mode)`.
 4. **Jamais de push.** Annoncer que le commit est posé et que le déploiement reste
