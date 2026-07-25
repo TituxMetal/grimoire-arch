@@ -129,6 +129,6 @@ ESP            : /boot (fstab)
 
 ## Références
 
-- Rapport initial — 2026-07-12 (`~/sandbox/devbox/2026-07-12-reboot-btrfs-apres-maj-kernel.md`, non publié)
+- Rapport initial : [boot BTRFS cassé après maj kernel (2026-07-12)](/grimoire-arch/solutions/devbox/reboot-btrfs-apres-maj-kernel/)
 - fstab archivé (`~/sandbox/devbox/archived/fstab_2026-07-21`, hors livre)
 - Solution voisine : [réparation boot /var plein](/grimoire-arch/solutions/devbox/reparation-boot-var-plein/)
