@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightLinksValidator from 'starlight-links-validator';
+import { unified } from '@astrojs/markdown-remark';
 // Explicit import so the plugin applies to both Markdown and MDX
 // (string form only covers .md and warns under @astrojs/mdx).
 import rehypeExternalLinks from 'rehype-external-links';
@@ -13,12 +14,14 @@ export default defineConfig({
 	// `base` MUST match the GitHub repo name (`grimoire-arch`), NOT the dated
 	// local folder. The site is served at https://TituxMetal.github.io/grimoire-arch/.
 	base: '/grimoire-arch',
-	// External links: open in new tab. rehype-external-links adds
-	// target="_blank" rel="noopener noreferrer" to every outbound <a>.
+	// External links: open in new tab. Astro 6.4+ wants plugins on
+	// markdown.processor (unified), not top-level markdown.rehypePlugins.
 	markdown: {
-		rehypePlugins: [
-			[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
-		],
+		processor: unified({
+			rehypePlugins: [
+				[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+			],
+		}),
 	},
 	integrations: [
 		starlight({
