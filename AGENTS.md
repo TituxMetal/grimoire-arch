@@ -43,7 +43,7 @@ Règles absolues :
 - **Décision build/deploy** → ADR dans `docs/adr/` (`AAAA-MM-JJ-titre.md`).
 - **Problème de build résolu** → `docs/solutions/` (problem→fix).
 - **Plan de travail site** → `docs/plans/` via `ce-plan`.
-- **Promouvoir calepin/terrain → livre** → skill `publish` (canon : `.agents/skills/publish/SKILL.md` ; dual-path temporaire `.claude/skills/publish/`). Registre : `docs/promotions.md`. Une fois, sens unique ; après promo le livre fait foi.
+- **Promouvoir calepin/terrain → livre** → skill `publish` (`.agents/skills/publish/SKILL.md`). Registre : `docs/promotions.md`. Une fois, sens unique ; après promo le livre fait foi.
 - **Couture canari** → liens guide ↔ ADR migration en root-relative avec base `/grimoire-arch/...` ; `bun run build` + `starlight-links-validator`.
 
 ---
@@ -68,7 +68,6 @@ Règles absolues :
 │   ├── promotions.md          # registre /publish
 │   ├── adr|plans|solutions|brainstorms|…
 ├── .agents/skills/publish/    # skill publish (canon OMP/Pi)
-└── .claude/skills/publish/    # dual-path temporaire — à supprimer après smoke OMP
 ```
 
 ---
@@ -119,8 +118,7 @@ Compléments : Pagefind FR sur le site déployé ; page visible sur `*.github.io
 Travail courant :
 
 1. Promotions calepin → livre (`publish`), surtout coulisses et chapitres acte II / tronc commun.
-2. Doctrine agent alignée OMP (cette carte) ; retirer le dual-path `.claude/` après smoke `publish` concluant.
-3. Pas de réintroduction heart-of-gold / Claude project plugins.
+2. Doctrine agent : OMP + `ce-*` only — pas de heart-of-gold / Claude project plugins.
 
 Rejet permanent : lien interne cassé ; `archives/` exposé ; hero noyé par le substrat ; build hors bun ; `slug:` dans le frontmatter contenu.
 
@@ -131,6 +129,5 @@ Rejet permanent : lien interne cassé ; `archives/` exposé ; hero noyé par le 
 Mettre à jour `AGENTS.md` quand :
 
 - la sidebar ou la structure hero/coulisses change (`astro.config.mjs` / ADR site) ;
-- le dual-path `.claude/` est supprimé ;
 - une nouvelle skill projet apparaît sous `.agents/skills/` ;
 - la commande de vérif ou le base path GH Pages change.

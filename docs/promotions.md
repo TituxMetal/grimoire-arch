@@ -1,8 +1,7 @@
 # Registre des promotions — calepin/terrain → livre
 
 Tableau de bord de ce qui a été promu vers `src/content/docs/` par la skill
-`publish` (canon : `.agents/skills/publish/SKILL.md` ; dual-path temporaire
-`.claude/skills/publish/`). Promotion **à sens unique, artefact par artefact,
+`publish` (`.agents/skills/publish/SKILL.md`). Promotion **à sens unique, artefact par artefact,
 une fois chacun** — après promotion, **la version du livre fait foi** et la
 source ne bouge plus (bannière posée dans la source par la skill).
 

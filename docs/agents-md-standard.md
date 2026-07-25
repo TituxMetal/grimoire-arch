@@ -31,7 +31,6 @@ dans `docs/adr/`, pas dans `AGENTS.md`. La procédure publish vit dans
 Mettre `AGENTS.md` (racine) à jour quand :
 
 - la sidebar ou la structure hero/coulisses change ;
-- le dual-path `.claude/skills/publish/` est retiré (canon = `.agents` only) ;
 - une skill projet est ajoutée/déplacée sous `.agents/skills/` ;
 - `bun run build`, le base path, ou l'hébergement change ;
 - le plugin/harness de référence webdev change (aujourd'hui : OMP + `ce-*` only).

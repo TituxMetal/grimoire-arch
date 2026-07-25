@@ -16,10 +16,8 @@ Spec d'origine : `~/sandbox/grimoire/2026-06-07-spec-skill-publish.md` (validée
 `~/sandbox/grimoire/2026-06-06-architecture-documentaire-atelier-livre-terrain.md`
 (les quatre lieux : terrain / calepin / livre / atelier).
 
-**Emplacement canonique :** `.agents/skills/publish/SKILL.md`.
-Copie dual-path temporaire : `.claude/skills/publish/SKILL.md` (à supprimer dès
-que la découverte OMP/Pi depuis `.agents` est validée). Ne pas confondre avec
-`ce-promote` (Compound Engineering — copy marketing).
+**Emplacement :** `.agents/skills/publish/SKILL.md`.
+Ne pas confondre avec `ce-promote` (Compound Engineering — copy marketing).
 
 ## Cadre — à ne jamais violer
 
