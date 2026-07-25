@@ -15,3 +15,4 @@ Sources autorisées : `~/sandbox/**`, `~/.config/nvim/docs/**` uniquement.
 | `~/sandbox/devbox/2026-07-16-priorite-lan-wifi-metrique-route.md` | `src/content/docs/solutions/devbox/priorite-lan-wifi-metrique-route.md` | 2026-07-25 | Coulisses |
 | `~/sandbox/devbox/2026-07-21-recidive-boot-apres-maj-kernel.md` | `src/content/docs/solutions/devbox/recidive-boot-apres-maj-kernel.md` | 2026-07-25 | Coulisses |
 | `~/sandbox/devbox/2026-07-12-reboot-btrfs-apres-maj-kernel.md` | `src/content/docs/solutions/devbox/reboot-btrfs-apres-maj-kernel.md` | 2026-07-25 | Coulisses |
+| `~/sandbox/devbox/2026-07-18-session-bspwm-assign-workspaces.md` | `src/content/docs/findings/devbox/session-bspwm-assign-workspaces.md` | 2026-07-25 | Coulisses |
