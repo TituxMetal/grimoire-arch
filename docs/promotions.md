@@ -13,5 +13,4 @@ Sources autorisées : `~/sandbox/**`, `~/.config/nvim/docs/**` uniquement.
 | Source | Destination | Date | Mode |
 |---|---|---|---|
 | `~/sandbox/devbox/2026-06-04-reparation-boot-var-plein.md` | `src/content/docs/solutions/devbox/reparation-boot-var-plein.md` | 2026-06-07 | Coulisses |
-
-*(prochaine candidate smoke OMP : p.ex. `~/sandbox/devbox/2026-07-16-priorite-lan-wifi-metrique-route.md` en coulisses — après validation découverte skill `.agents`.)*
+| `~/sandbox/devbox/2026-07-16-priorite-lan-wifi-metrique-route.md` | `src/content/docs/solutions/devbox/priorite-lan-wifi-metrique-route.md` | 2026-07-25 | Coulisses |
