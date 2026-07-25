@@ -28,10 +28,10 @@ Règles absolues :
 
 ## Read First
 
-1. `../_INCUBATOR/grimoire-arch/2026-06-02-wiki-migration-arch-starlight-brainstorm.md` — QUOI/POURQUOI verrouillé (graine germée).
-2. `docs/agents-md-standard.md` — 12 checks PASS/FAIL de ce fichier.
-3. `docs/adr/` — décisions architecturales *du site*.
-4. Discipline webdev : `../AGENTS.md` — skills `ce-*`, OMP, conventions de l'espace projets.
+1. `docs/agents-md-standard.md` — 12 checks PASS/FAIL de ce fichier.
+2. `docs/adr/` — décisions architecturales *du site*.
+3. *(workspace local, hors clone GitHub)* `../_INCUBATOR/grimoire-arch/2026-06-02-wiki-migration-arch-starlight-brainstorm.md` — QUOI/POURQUOI verrouillé.
+4. *(workspace local)* `../AGENTS.md` — discipline webdev (`ce-*`, OMP).
 
 ---
 
@@ -95,7 +95,7 @@ Brainstorm produit d'origine : `../_INCUBATOR/grimoire-arch/2026-06-02-wiki-migr
 
 - **bun uniquement** (pas npm/pnpm/yarn).
 - Stack : Astro Starlight + TypeScript/MDX + bun.
-- Sources hors repo pour `/publish` : **`~/sandbox/**`** et **`~/.config/nvim/docs/**`** seulement. Le terrain devbox **est** `~/sandbox/devbox/` — pas d'autre racine (`migration-devbox` n'existe pas et n'existera pas).
+- Sources hors repo pour `/publish` : `~/sandbox/**` (calepin, dont `devbox/`) et `~/.config/nvim/docs/**` (terrain nvim).
 - **`lgdweb.fr` hors périmètre** (lien footer éventuel plus tard seulement).
 
 ---
