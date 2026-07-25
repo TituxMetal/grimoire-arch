@@ -17,3 +17,4 @@ Sources autorisées : `~/sandbox/**`, `~/.config/nvim/docs/**` uniquement.
 | `~/sandbox/devbox/2026-07-12-reboot-btrfs-apres-maj-kernel.md` | `src/content/docs/solutions/devbox/reboot-btrfs-apres-maj-kernel.md` | 2026-07-25 | Coulisses |
 | `~/sandbox/devbox/2026-07-18-session-bspwm-assign-workspaces.md` | `src/content/docs/findings/devbox/session-bspwm-assign-workspaces.md` | 2026-07-25 | Coulisses |
 | `~/sandbox/devbox/2026-07-16-session-bspwm-picom-polybar.md` | `src/content/docs/solutions/devbox/session-bspwm-picom-polybar.md` | 2026-07-25 | Coulisses |
+| `~/.config/nvim/docs/solutions/formatting/conform-biome-fallback-config-perso.md` | `src/content/docs/solutions/nvim/conform-biome-fallback-config-perso.md` | 2026-07-25 | Coulisses |
