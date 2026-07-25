@@ -13,3 +13,4 @@ Sources autorisées : `~/sandbox/**`, `~/.config/nvim/docs/**` uniquement.
 |---|---|---|---|
 | `~/sandbox/devbox/2026-06-04-reparation-boot-var-plein.md` | `src/content/docs/solutions/devbox/reparation-boot-var-plein.md` | 2026-06-07 | Coulisses |
 | `~/sandbox/devbox/2026-07-16-priorite-lan-wifi-metrique-route.md` | `src/content/docs/solutions/devbox/priorite-lan-wifi-metrique-route.md` | 2026-07-25 | Coulisses |
+| `~/sandbox/devbox/2026-07-21-recidive-boot-apres-maj-kernel.md` | `src/content/docs/solutions/devbox/recidive-boot-apres-maj-kernel.md` | 2026-07-25 | Coulisses |
